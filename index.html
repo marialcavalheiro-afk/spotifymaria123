@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1db954">
+<title>Spotify Clone</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">Spotify</div>
+  <nav>
+    <button class="nav-btn active" id="btn-nav-player">Músicas</button>
+    <button class="nav-btn" id="btn-nav-admin">Admin</button>
+    <button class="nav-btn" id="btn-nav-cadastro">Criar Conta</button>
+  </nav>
+</header>
+
+<main class="container-principal">
+
+<section id="secao-player">
+  <div class="cabecalho-player">
+    <div><h1>Suas músicas</h1><p>Escolha uma música para começar.</p></div>
+    <input id="busca" placeholder="O que você quer ouvir?">
+  </div>
+  <div id="lista-player" class="lista-player"></div>
+</section>
+
+<section id="secao-admin" class="oculto">
+  <div class="admin-topo">
+    <div><small>PAINEL ADMINISTRATIVO</small><h1>Gerenciar músicas</h1><p>Adicione, edite e remova músicas.</p></div>
+  </div>
+
+  <div class="admin-grid">
+    <div class="painel-formulario">
+      <h2 id="titulo-formulario">Adicionar música</h2>
+      <form id="form-musica">
+        <div class="campo"><label>Título</label><input id="titulo" required></div>
+        <div class="campo"><label>Artista</label><input id="artista" required></div>
+
+        <div class="linha-campos">
+          <div class="campo"><label>Gênero</label><input id="estilo" required></div>
+          <div class="campo"><label>Duração</label><input id="duracao" placeholder="03:20" required></div>
+        </div>
+
+        <div class="campo">
+          <label>Capa</label>
+          <div class="upload-area">
+            <input type="file" id="capaArquivo" accept="image/*" hidden>
+            <div id="upload-capa-conteudo">🖼️<br><strong>Escolher imagem</strong></div>
+            <img id="preview-capa" class="preview-capa oculto">
+          </div>
+          <button type="button" class="btn-escolher" id="btn-escolher-capa">Escolher capa</button>
+          <div id="nome-capa" class="arquivo-selecionado oculto">🖼️ <span id="nome-capa-texto"></span></div>
+        </div>
+
+        <div class="campo">
+          <label>Arquivo da música</label>
+          <div class="upload-audio">
+            🎵
+            <div class="audio-info">
+              <strong id="nome-audio">Nenhum arquivo selecionado</strong>
+              <span id="tamanho-audio">Escolha um áudio</span>
+            </div>
+            <input type="file" id="audioArquivo" accept="audio/*" hidden>
+            <button type="button" id="btn-escolher-audio">Escolher</button>
+          </div>
+        </div>
+
+        <div class="acoes-formulario">
+          <button type="button" id="btn-cancelar" class="btn-cancelar oculto">Cancelar</button>
+          <button class="btn-salvar" id="btn-salvar">+ Adicionar música</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="painel-dica">
+      <h3>💡 Como funciona?</h3>
+      <p>Preencha os dados, escolha a capa e o arquivo de áudio.</p>
+      <p>01 — Dados da música</p>
+      <p>02 — Escolha a capa</p>
+      <p>03 — Escolha o áudio</p>
+      <p>04 — Adicione</p>
+    </div>
+  </div>
+
+  <div class="painel-lista">
+    <h2>Biblioteca</h2>
+    <p id="contador-musicas">0 músicas</p>
+    <div class="tabela-container">
+      <table class="tabela-musicas">
+        <thead>
+          <tr><th>Capa</th><th>Música</th><th>Artista</th><th>Gênero</th><th>Duração</th><th>Ações</th></tr>
+        </thead>
+        <tbody id="lista-admin"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="secao-cadastro" class="oculto">
+  <div class="cadastro-container">
+    <div class="cadastro-icone">👤</div>
+    <h1>Criar Conta</h1>
+    <p>Crie sua conta para acessar o Spotify Clone.</p>
+    <form id="form-cadastro">
+      <div class="campo"><label>E-mail</label><input type="email" id="email" required></div>
+      <div class="campo"><label>Senha</label><input type="password" id="senha" required></div>
+      <button class="btn-salvar">Criar conta</button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="player-fixo">
+  <div class="info-tocar-agora">
+    <img id="player-capa" src="https://via.placeholder.com/56" alt="Capa">
+    <div><strong id="player-titulo">Nenhuma música</strong><small id="player-artista">--</small></div>
+  </div>
+  <audio id="audio-element" controls></audio>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

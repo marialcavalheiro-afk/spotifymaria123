@@ -1,0 +1,880 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.oculto {
+  display: none !important;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  width: 100%;
+  height: 72px;
+  padding: 0 28px;
+  background: #000;
+  border-bottom: 1px solid #181818;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.logo {
+  color: #1db954;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 6px;
+}
+
+.nav-btn {
+  border: none;
+  background: transparent;
+  color: #b3b3b3;
+  padding: 10px 17px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background: #242424;
+  color: #fff;
+}
+
+.nav-btn.active {
+  background: #fff;
+  color: #000;
+}
+
+
+/* CONTAINER */
+
+.container-principal {
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 30px 28px 50px;
+}
+
+.secao-aba {
+  width: 100%;
+}
+
+
+/* PLAYER */
+
+.cabecalho-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.cabecalho-player h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.cabecalho-player p {
+  color: #a7a7a7;
+}
+
+#busca {
+  width: 380px;
+  max-width: 100%;
+  background: #242424;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 50px;
+  padding: 13px 20px;
+  outline: none;
+}
+
+#busca:focus {
+  border-color: #fff;
+}
+
+.lista-player {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 22px;
+}
+
+.card-musica {
+  background: #181818;
+  border-radius: 10px;
+  padding: 16px;
+  transition: 0.25s;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.card-musica:hover {
+  background: #282828;
+  transform: translateY(-3px);
+}
+
+.capa-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-bottom: 14px;
+}
+
+.capa-container img,
+.capa-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.capa-placeholder {
+  background: linear-gradient(135deg, #222, #333);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+.btn-play {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: #1db954;
+  color: #000;
+  font-size: 1.15rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: 0.2s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-musica:hover .btn-play {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-play:hover {
+  background: #1ed760;
+  transform: scale(1.06) !important;
+}
+
+.card-musica .info h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5px;
+}
+
+.card-musica .info p {
+  color: #b3b3b3;
+  font-size: 0.88rem;
+}
+
+.genero {
+  display: inline-block;
+  color: #777;
+  font-size: 0.75rem;
+  margin-top: 8px;
+}
+
+.btn-download {
+  width: 100%;
+  margin-top: 14px;
+  padding: 9px;
+  border: 1px solid #555;
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.btn-download:hover {
+  background: #fff;
+  color: #000;
+}
+
+
+/* ADMIN */
+
+.admin-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.admin-topo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-tag {
+  display: inline-block;
+  color: #1db954;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-bottom: 8px;
+}
+
+.admin-topo h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.admin-topo p {
+  color: #a7a7a7;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  align-items: start;
+}
+
+.painel-formulario,
+.painel-dica,
+.painel-lista {
+  background: #181818;
+  border: 1px solid #282828;
+  border-radius: 12px;
+}
+
+.painel-formulario {
+  padding: 25px;
+}
+
+.painel-titulo {
+  margin-bottom: 25px;
+}
+
+.painel-titulo h2 {
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+.painel-titulo p {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+#form-musica {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  color: #ddd;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.campo input {
+  width: 100%;
+  background: #242424;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 12px 13px;
+  color: #fff;
+  outline: none;
+}
+
+.campo input:focus {
+  border-color: #1db954;
+}
+
+.linha-campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+
+/* UPLOAD CAPA */
+
+.upload-area {
+  width: 100%;
+  height: 210px;
+  background: #121212;
+  border: 1px dashed #555;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: #aaa;
+}
+
+.upload-conteudo strong {
+  color: #fff;
+}
+
+.upload-icone {
+  font-size: 2.3rem;
+  margin-bottom: 5px;
+}
+
+.upload-conteudo span {
+  font-size: 0.75rem;
+}
+
+.preview-capa {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.btn-escolher {
+  width: 100%;
+  margin-top: 8px;
+  background: #242424;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 11px;
+  font-weight: 700;
+}
+
+.btn-escolher:hover {
+  background: #333;
+}
+
+.arquivo-selecionado {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #242424;
+  border-radius: 5px;
+  color: #bbb;
+  font-size: 0.78rem;
+  overflow: hidden;
+}
+
+#nome-capa-texto {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* UPLOAD AUDIO */
+
+.upload-audio {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  background: #121212;
+  border: 1px solid #333;
+  border-radius: 7px;
+  padding: 13px;
+}
+
+.audio-upload-icone {
+  width: 42px;
+  height: 42px;
+  background: #1db954;
+  color: #000;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audio-upload-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.audio-upload-info strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.audio-upload-info span {
+  color: #777;
+  font-size: 0.72rem;
+}
+
+.btn-escolher-audio {
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+
+/* AÇÕES */
+
+.acoes-formulario {
+  display: flex;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.btn-salvar {
+  flex: 1;
+  border: none;
+  border-radius: 50px;
+  background: #1db954;
+  color: #000;
+  padding: 13px;
+  font-weight: 800;
+  transition: 0.2s;
+}
+
+.btn-salvar:hover {
+  background: #1ed760;
+}
+
+.btn-salvar:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.btn-cancelar {
+  border: 1px solid #555;
+  background: transparent;
+  color: #fff;
+  border-radius: 50px;
+  padding: 13px 18px;
+  font-weight: 700;
+}
+
+.btn-cancelar:hover {
+  background: #292929;
+}
+
+
+/* DICA */
+
+.painel-dica {
+  padding: 23px;
+}
+
+.dica-icone {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.painel-dica h3 {
+  margin-bottom: 8px;
+}
+
+.painel-dica > p {
+  color: #999;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.dica-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid #292929;
+}
+
+.dica-item span {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #242424;
+  color: #1db954;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.dica-item p {
+  color: #bbb;
+  font-size: 0.8rem;
+}
+
+
+/* LISTA ADMIN */
+
+.painel-lista {
+  overflow: hidden;
+}
+
+.painel-lista-topo {
+  padding: 20px 22px;
+  border-bottom: 1px solid #282828;
+}
+
+.painel-lista-topo h2 {
+  font-size: 1.15rem;
+}
+
+.painel-lista-topo p {
+  color: #777;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.tabela-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela-musicas {
+  width: 100%;
+  min-width: 800px;
+  border-collapse: collapse;
+}
+
+.tabela-musicas th {
+  color: #777;
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabela-musicas th,
+.tabela-musicas td {
+  padding: 13px 18px;
+  border-bottom: 1px solid #242424;
+}
+
+.tabela-musicas td {
+  color: #ccc;
+  font-size: 0.85rem;
+}
+
+.mini-capa {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  background: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mini-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nome-musica-tabela strong {
+  color: #fff;
+}
+
+.badge-genero {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #242424;
+  color: #aaa;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.acoes {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-acao {
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.btn-tocar {
+  background: #1db954;
+  color: #000;
+}
+
+.btn-editar {
+  background: #2e77d0;
+  color: #fff;
+}
+
+.btn-excluir {
+  background: #e91429;
+  color: #fff;
+}
+
+.btn-acao:hover {
+  filter: brightness(1.15);
+}
+
+.tabela-vazia {
+  text-align: center !important;
+  color: #777 !important;
+  padding: 40px !important;
+}
+
+
+/* CADASTRO */
+
+.cadastro-container {
+  width: 100%;
+  max-width: 420px;
+  margin: 50px auto;
+  background: #181818;
+  border: 1px solid #282828;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.cadastro-icone {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1db954;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+}
+
+.cadastro-container h1 {
+  text-align: center;
+}
+
+.cadastro-container > p {
+  color: #888;
+  text-align: center;
+  margin: 8px 0 25px;
+  font-size: 0.85rem;
+}
+
+#form-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+
+/* PLAYER FIXO */
+
+.player-fixo {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  padding: 0 25px;
+  background: #101010;
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-tocar-agora {
+  width: 30%;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.info-tocar-agora img {
+  width: 56px;
+  height: 56px;
+  border-radius: 5px;
+  object-fit: cover;
+  background: #242424;
+}
+
+.player-info-texto {
+  min-width: 0;
+}
+
+.titulo-player {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.artista-player {
+  color: #999;
+  font-size: 0.75rem;
+  margin-top: 4px;
+}
+
+.controles-audio {
+  width: 45%;
+}
+
+.controles-audio audio {
+  width: 100%;
+  height: 40px;
+}
+
+.player-direita {
+  width: 30%;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 850px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .painel-dica {
+    display: none;
+  }
+
+  .cabecalho-player {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #busca {
+    width: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar {
+    height: auto;
+    min-height: 70px;
+    flex-direction: column;
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .navbar nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container-principal {
+    padding: 20px 14px 40px;
+  }
+
+  .linha-campos {
+    grid-template-columns: 1fr;
+  }
+
+  .lista-player {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card-musica {
+    padding: 10px;
+  }
+
+  .player-fixo {
+    height: 80px;
+    padding: 0 12px;
+  }
+
+  .info-tocar-agora {
+    min-width: 0;
+    width: 40%;
+  }
+
+  .info-tocar-agora img {
+    width: 44px;
+    height: 44px;
+  }
+
+  .controles-audio {
+    width: 60%;
+  }
+
+  .player-direita {
+    display: none;
+  }
+
+  .titulo-player {
+    font-size: 0.75rem;
+  }
+
+  .artista-player {
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .lista-player {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-tocar-agora img {
+    display: none;
+  }
+
+  .acoes-formulario {
+    flex-direction: column;
+  }
+}
